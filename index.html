@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pizza Cart</title>
+
+	<script src="https://unpkg.com/alpinejs" defer></script>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="./pizza-cart.js"></script>
+	<script src="./index.js"></script>
+
+	<link rel="stylesheet" href="./style.css">
+	<style>
+		[x-cloak] {
+			display: none;
+		}
+	</style>
+</head>
+
+<body x-data="pizza" class="flex flex-col">
+	<h1 class="heading">Perfect Pizza</h1>
+
+	<div class="pizza-cart">
+		<div>
+			<span>Small</span>
+			<button x-on:click="addPizza('small')" class="round" type="button">+</button>
+			<button x-on:click="removePizza('small')" class="round" type="button">-</button>
+			<span>R<span x-text="cost.small" x-cloak></span></span>
+		</div>
+		<div>
+			<span>Medium</span>
+			<button x-on:click="addPizza('medium')" class="round" type="button">+</button>
+			<button x-on:click="removePizza('medium')" class="round" type="button">-</button>
+			<span>R<span x-text="cost.medium" x-cloak></span></span>
+		</div>
+		<div>
+			<span>Large</span>
+			<button x-on:click="addPizza('large')" class="round" type="button">+</button>
+			<button x-on:click="removePizza('large')" class="round" type="button">-</button>
+			<span>R<span x-text="cost.large" x-cloak></span></span>
+		</div>
+		<div>
+			<span>Total cost</span>
+			<span>R<span x-text="cost.small + cost.medium + cost.large">0.00</span></span>
+		</div>
+		<div x-data="message: ''">
+			<span x-text="message"></span>
+		</div>
+		<label for="payment-amount">
+			<span>Payment</span>
+			<input type="number" name="" id="payment-amount">
+		</label>
+		<button class="" type="button">Buy</button>
+	</div>
+
+	<div class="pizza-menu">
+		<div class="menu-option" id="medium-pizza">
+			<img class="" src="./images/pizza.png" alt="">
+			<h2 class="pizza-title">Medium Pizza</h2>
+			<p class="price">R69.99</p>
+			<p class="description">
+				Medium margarita pizza with 3 toppings max. 2 or less meat toppings. 3 or less other toppings.
+			</p>
+			<button x-on:click="buyPizza('medium')" class="" type="button">Buy</button>
+		</div>
+
+		<div class="menu-option" id="large-pizza">
+			<img class="" src="images/pizza.png" alt="">
+			<h2 class="pizza-title">Large Pizza</h2>
+			<p class="price">R99.99</p>
+			<p class="description">
+				Margarita pizza with 3 toppings max. 3 meat toppings max. 3 or less other toppings.
+			</p>
+			<button x-on:click="buyPizza('large')" class="" type="button">Buy</button>
+		</div>
+
+		<div class="menu-option" id="small-pizza">
+			<img class="" src="images/pizza.png" alt="">
+			<h2 class="pizza-title">Small Pizza</h2>
+			<p class="price">R49.99</p>
+			<p class="description">
+				Small pizza with 3 toppings. 1 meat topping. 3 or less other toppings.
+			</p>
+			<button x-on:click="buyPizza('small')" class="" type="button">Buy</button>
+		</div>
+	</div>
+
+	<div class="contact">
+		<h2 class="">Contact details</h2>
+		<span>Contact us at:</span>
+		<span>011 340 1231</span>
+		<span>info@perfectpizza.co.za</span>
+	</div>
+</body>
+
+</html>

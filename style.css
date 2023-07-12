@@ -1,0 +1,108 @@
+:root {
+	font-size: 16px;
+
+	--primary-bg: #6c6061;
+	--primary-fg: #64403e;
+	--pizza-one: #c9cebd;
+	--pizza-two: #b2bcaa;
+	--pizza-three: #838e83;
+}
+
+body {
+	background: var(--primary-bg);
+}
+
+img {
+	max-width: 100%;
+}
+
+button {
+	background: var(--primary-fg) !important;
+	color: white !important;
+	border-radius: 1rem;
+	height: 2rem;
+	padding-inline: 0.5rem !important;
+}
+
+button.round {
+	width: 2rem;
+}
+
+input {
+	border: 1px solid black;
+	border-radius: 0.5rem;
+	height: 2rem;
+	text-align: center;
+}
+
+input:focus {
+	outline: none;
+}
+
+.heading {
+	font-size: 2rem;
+	font-weight: bold;
+	text-align: center;
+}
+
+.pizza-cart {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	padding: 2rem;
+}
+
+.pizza-menu {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	gap: 2rem;
+	padding: 2rem;
+}
+
+.menu-option {
+	border-radius: 1rem;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	padding: 1rem;
+}
+
+.menu-option img {
+	align-self: center;
+	margin-bottom: 1rem;
+	filter: drop-shadow(0 0 1rem #0004);
+}
+
+.menu-option .description {
+	margin-block: 1rem;
+}
+
+.menu-option button {
+	margin-top: auto;
+}
+
+#small-pizza {
+	background: var(--pizza-one);
+}
+
+#small-pizza img {
+	max-width: 70%;
+}
+
+#medium-pizza {
+	background: var(--pizza-two);
+}
+
+#medium-pizza img {
+	max-width: 85%;
+}
+
+#large-pizza {
+	background: var(--pizza-three);
+}
+
+#large-pizza img {
+	max-width: 100%;
+}
