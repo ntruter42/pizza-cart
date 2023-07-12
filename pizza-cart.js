@@ -23,20 +23,28 @@ function pizzaCart() {
 		addPizza(size) {
 			if (this.count[size] >= 1) {
 				this.count[size] += 1;
+				this.updateCosts();
+			} else {
+				// show message
 			}
-			this.updateCosts();
 		},
 
 		removePizza(size) {
 			if (this.count[size] > 0) {
 				this.count[size] -= 1;
+				this.updateCosts();
+			} else {
+				// show message
 			}
-			this.updateCosts();
 		},
 
 		buyPizza(size) {
-			this.count[size] = 1;
-			this.updateCosts();
+			if (this.count[size] === 0) {
+				this.count[size] = 1;
+				this.updateCosts();
+			} else {
+				// show message
+			}
 		},
 
 		updateCosts() {
