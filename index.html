@@ -32,7 +32,7 @@
 				<button @click=" addPizza('small')" class="round" type="button">+</button>
 				<button @click="removePizza('small')" class="round" type="button">-</button>
 			</div>
-			<span>R<span x-text="cost.small.toFixed(2)"></span></span>
+			<span class="cost">R<span x-text="cost.small.toFixed(2)"></span></span>
 		</div>
 		<div class="cart-option">
 			<div>
@@ -43,7 +43,7 @@
 				<button @click=" addPizza('medium')" class="round" type="button">+</button>
 				<button @click="removePizza('medium')" class="round" type="button">-</button>
 			</div>
-			<span>R<span x-text="cost.medium.toFixed(2)"></span></span>
+			<span class="cost">R<span x-text="cost.medium.toFixed(2)"></span></span>
 		</div>
 		<div class="cart-option">
 			<div>
@@ -54,11 +54,11 @@
 				<button @click=" addPizza('large')" class="round" type="button">+</button>
 				<button @click="removePizza('large')" class="round" type="button">-</button>
 			</div>
-			<span>R<span x-text="cost.large.toFixed(2)"></span></span>
+			<span class="cost">R<span x-text="cost.large.toFixed(2)"></span></span>
 		</div>
 		<div class="total">
 			<span>Total cost</span>
-			<span class="number">R<span x-text="total.toFixed(2)"></span></span>
+			<span :class="total && checkout ? 'highlight' : ''" class="cost">R<span x-text="total.toFixed(2)"></span></span>
 		</div>
 		<div x-show="message" x-transition class="bg-white border border-black text-black px-4 py-2 rounded">
 			<span x-text="message" class=""></span>
