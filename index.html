@@ -14,45 +14,51 @@
 	<link rel="stylesheet" href="./style.css">
 	<style>
 		[x-cloak] {
-			display: none;
+			display: none !important;
 		}
 	</style>
 </head>
 
-<body x-data="pizza" class="flex flex-col">
+<body x-data="pizza" class="main flex flex-col" class="max-w-20">
 	<h1 class="heading">Perfect Pizza</h1>
 
-	<div class="pizza-cart">
+	<div class="pizza-cart text-white">
 		<div>
 			<span>Small</span>
-			<button x-on:click="addPizza('small')" class="round" type="button">+</button>
-			<button x-on:click="removePizza('small')" class="round" type="button">-</button>
-			<span>R<span x-text="cost.small" x-cloak></span></span>
+			<button @click="addPizza('small')" class="round" type="button">+</button>
+			<button @click="removePizza('small')" class="round" type="button">-</button>
+			<span>R<span x-text="cost.small.toFixed(2)"></span></span>
 		</div>
 		<div>
 			<span>Medium</span>
-			<button x-on:click="addPizza('medium')" class="round" type="button">+</button>
-			<button x-on:click="removePizza('medium')" class="round" type="button">-</button>
-			<span>R<span x-text="cost.medium" x-cloak></span></span>
+			<button @click="addPizza('medium')" class="round" type="button">+</button>
+			<button @click="removePizza('medium')" class="round" type="button">-</button>
+			<span>R<span x-text="cost.medium.toFixed(2)"></span></span>
 		</div>
 		<div>
 			<span>Large</span>
-			<button x-on:click="addPizza('large')" class="round" type="button">+</button>
-			<button x-on:click="removePizza('large')" class="round" type="button">-</button>
-			<span>R<span x-text="cost.large" x-cloak></span></span>
+			<button @click="addPizza('large')" class="round" type="button">+</button>
+			<button @click="removePizza('large')" class="round" type="button">-</button>
+			<span>R<span x-text="cost.large.toFixed(2)"></span></span>
 		</div>
-		<div>
-			<span>Total cost:</span>
-			<span>R<span x-text="cost.small + cost.medium + cost.large">0.00</span></span>
+		<div class="total">
+			<span>Total cost</span>
+			<span class="number">R<span x-text="total.toFixed(2)"></span></span>
 		</div>
-		<div x-data="message: ''">
-			<span x-text="message"></span>
+		<div x-show="message" x-transition
+			class="bg-white border border-black text-black px-4 py-3 rounded relative" role="alert">
+			<span x-text="message" class="block sm:inline"></span>
 		</div>
-		<label for="payment-amount">
-			<span>Payment</span>
-			<input type="number" name="" id="payment-amount">
-		</label>
-		<button class="" type="button">Buy</button>
+		<div x-show="!checkout" class="checkout" x-cloak>
+			<button @click="clickCheckout" type="button">Checkout</button>
+		</div>
+		<div x-show="checkout" class="payment" x-cloak>
+			<label for="payment-amount">
+				<span>Amount</span>
+				<input x-model="payment" type="text" id="payment-amount">
+			</label>
+			<button @click="makePayment" class="" type="button">Pay</button>
+		</div>
 	</div>
 
 	<div class="pizza-menu">
@@ -63,7 +69,9 @@
 			<p class="description">
 				Medium margarita pizza with 3 toppings max. 2 or less meat toppings. 3 or less other toppings.
 			</p>
-			<button x-on:click="buyPizza('medium')" class="" type="button">Buy</button>
+			<button @click="addPizza('medium')" x-show="count.medium > 0" x-cloak type="button">Add more...</button>
+			<button @click="buyPizza('medium')" x-show="count.medium === 0" x-cloak class="" type="button">Add to
+				Cart</button>
 		</div>
 
 		<div class="menu-option" id="large-pizza">
@@ -73,7 +81,9 @@
 			<p class="description">
 				Margarita pizza with 3 toppings max. 3 meat toppings max. 3 or less other toppings.
 			</p>
-			<button x-on:click="buyPizza('large')" class="" type="button">Buy</button>
+			<button @click="addPizza('large')" x-show="count.large > 0" x-cloak type="button">Add more...</button>
+			<button @click="buyPizza('large')" x-show="count.large === 0" x-cloak class="" type="button">Add to
+				Cart</button>
 		</div>
 
 		<div class="menu-option" id="small-pizza">
@@ -83,13 +93,14 @@
 			<p class="description">
 				Small pizza with 3 toppings. 1 meat topping. 3 or less other toppings.
 			</p>
-			<button x-on:click="buyPizza('small')" class="" type="button">Buy</button>
+			<button @click="addPizza('small')" x-show="count.small > 0" x-cloak type="button">Add more...</button>
+			<button @click="buyPizza('small')" x-show="count.small === 0" x-cloak class="" type="button">Add to
+				Cart</button>
 		</div>
 	</div>
 
-	<div class="contact">
-		<h2 class="">Contact details</h2>
-		<span>Contact us at:</span>
+	<div class="contact text-white text-center flex flex-col">
+		<h2 class="heading">Contact us at:</h2>
 		<span>011 340 1231</span>
 		<span>info@perfectpizza.co.za</span>
 	</div>
