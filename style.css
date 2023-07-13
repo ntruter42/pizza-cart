@@ -45,6 +45,16 @@ button:active {
 	box-shadow: 0 1px 1px black;
 }
 
+.dead-btn button {
+	color: var(--primary-bg);
+	cursor: default;
+	box-shadow: none;
+}
+
+.dead-btn button:active {
+	box-shadow: none;
+}
+
 input {
 	border: 1px solid black;
 	border-radius: 0.5rem;
@@ -80,6 +90,10 @@ input:focus {
 	padding-inline: 0.25rem;
 }
 
+.total .number {
+	color: black;
+}
+
 .pizza-cart {
 	background: var(--primary-bg);
 	border-radius: 2rem;
@@ -105,6 +119,10 @@ input:focus {
 	align-items: center;
 	gap: 1rem;
 	width: 100%;
+}
+
+.cart-option>* {
+	width: 20%;
 }
 
 .pizza-menu {

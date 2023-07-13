@@ -28,7 +28,7 @@
 				<span>Small</span>
 				<span x-text="count.small" class="count"></span>
 			</div>
-			<div>
+			<div :class="count.small ? '' : 'dead-btn'">
 				<button @click=" addPizza('small')" class="round" type="button">+</button>
 				<button @click="removePizza('small')" class="round" type="button">-</button>
 			</div>
@@ -39,7 +39,7 @@
 				<span>Medium</span>
 				<span x-text="count.medium" class="count"></span>
 			</div>
-			<div>
+			<div :class="count.medium ? '' : 'dead-btn'">
 				<button @click=" addPizza('medium')" class="round" type="button">+</button>
 				<button @click="removePizza('medium')" class="round" type="button">-</button>
 			</div>
@@ -50,7 +50,7 @@
 				<span>Large</span>
 				<span x-text="count.large" class="count"></span>
 			</div>
-			<div>
+			<div :class="count.large ? '' : 'dead-btn'">
 				<button @click=" addPizza('large')" class="round" type="button">+</button>
 				<button @click="removePizza('large')" class="round" type="button">-</button>
 			</div>
@@ -60,17 +60,16 @@
 			<span>Total cost</span>
 			<span class="number">R<span x-text="total.toFixed(2)"></span></span>
 		</div>
-		<div x-show="message" x-transition class="bg-white border border-black text-black px-4 py-3 rounded relative"
-			role="alert">
-			<span x-text="message" class="block sm:inline"></span>
+		<div x-show="message" x-transition class="bg-white border border-black text-black px-4 py-2 rounded">
+			<span x-text="message" class=""></span>
 		</div>
-		<div x-show="!checkout" class="checkout" x-cloak>
+		<div x-show="!checkout" :class="count.small || count.medium || count.large ? '' : 'dead-btn'" class="checkout" x-cloak>
 			<button @click="clickCheckout" type="button">Checkout</button>
 		</div>
-		<div x-show="checkout" class="payment" x-cloak>
+		<div x-show="checkout" :class=" payment >= total ? '' : 'dead-btn'" class="payment" x-cloak>
 			<label for="payment-amount">
 				<span>Amount</span>
-				<input x-model="payment" type="text" id="payment-amount">
+				<input x-model="payment" type="number" id="payment-amount">
 			</label>
 			<button @click="makePayment" class="" type="button">Pay</button>
 		</div>
@@ -114,7 +113,7 @@
 		</div>
 	</div>
 
-	<div class="contact text-white text-center flex flex-col">
+	<div class="contact w-11/12 text-white text-center flex flex-col">
 		<h2 class="heading">Contact us at:</h2>
 		<span>011 340 1231</span>
 		<span>info@perfectpizza.co.za</span>

@@ -1,6 +1,6 @@
 function pizzaCart() {
 	return {
-		message: ``,
+		message: '',
 		checkout: false,
 		payment: 0,
 		total: 0,
@@ -44,7 +44,7 @@ function pizzaCart() {
 				}
 				this.checkout = false;
 				this.updateCosts();
-				this.displayMessage(`Thank you for your support. Enjoy!`);
+				this.displayMessage(`Thank you. Enjoy!`);
 			} else {
 				this.displayMessage(`Not enough money`);
 			}
@@ -89,7 +89,7 @@ function pizzaCart() {
 			clearTimeout(this.msgTimeout);
 			this.message = message;
 			this.msgTimeout = setTimeout(() => {
-				this.message = ``;
+				this.message = '';
 			}, this.msgTime);
 		}
 	}
