@@ -74,7 +74,7 @@ function pizzaCart() {
 				this.count[size] -= 1;
 				this.updateCosts();
 			} else {
-				this.displayMessage(`No pizzas to subtract`);
+				this.displayMessage(`No ${size} pizzas to subtract`);
 			}
 		},
 

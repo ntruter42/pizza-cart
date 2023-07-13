@@ -25,28 +25,31 @@
 	<div class="pizza-cart text-white">
 		<div>
 			<span>Small</span>
-			<button @click="addPizza('small')" class="round" type="button">+</button>
-			<button @click="removePizza('small')" class="round" type="button">-</button>
-			<span>R<span x-text="cost.small.toFixed(2)"></span></span>
+			(<span x-text="count.small""></span>)
+			<button @click=" addPizza('small')" class="round" type="button">+</button>
+				<button @click="removePizza('small')" class="round" type="button">-</button>
+				<span>R<span x-text="cost.small.toFixed(2)"></span></span>
 		</div>
 		<div>
 			<span>Medium</span>
-			<button @click="addPizza('medium')" class="round" type="button">+</button>
-			<button @click="removePizza('medium')" class="round" type="button">-</button>
-			<span>R<span x-text="cost.medium.toFixed(2)"></span></span>
+			(<span x-text="count.medium""></span>)
+			<button @click=" addPizza('medium')" class="round" type="button">+</button>
+				<button @click="removePizza('medium')" class="round" type="button">-</button>
+				<span>R<span x-text="cost.medium.toFixed(2)"></span></span>
 		</div>
 		<div>
 			<span>Large</span>
-			<button @click="addPizza('large')" class="round" type="button">+</button>
-			<button @click="removePizza('large')" class="round" type="button">-</button>
-			<span>R<span x-text="cost.large.toFixed(2)"></span></span>
+			(<span x-text="count.large""></span>)
+			<button @click=" addPizza('large')" class="round" type="button">+</button>
+				<button @click="removePizza('large')" class="round" type="button">-</button>
+				<span>R<span x-text="cost.large.toFixed(2)"></span></span>
 		</div>
 		<div class="total">
 			<span>Total cost</span>
 			<span class="number">R<span x-text="total.toFixed(2)"></span></span>
 		</div>
-		<div x-show="message" x-transition
-			class="bg-white border border-black text-black px-4 py-3 rounded relative" role="alert">
+		<div x-show="message" x-transition class="bg-white border border-black text-black px-4 py-3 rounded relative"
+			role="alert">
 			<span x-text="message" class="block sm:inline"></span>
 		</div>
 		<div x-show="!checkout" class="checkout" x-cloak>
@@ -62,6 +65,18 @@
 	</div>
 
 	<div class="pizza-menu">
+		<div class="menu-option" id="small-pizza">
+			<img class="" src="images/pizza.png" alt="">
+			<h2 class="pizza-title">Small Pizza</h2>
+			<p class="price">R49.99</p>
+			<p class="description">
+				Small pizza with 3 toppings. 1 meat topping. 3 or less other toppings.
+			</p>
+			<button @click="addPizza('small')" x-show="count.small > 0" x-cloak type="button">Add more...</button>
+			<button @click="buyPizza('small')" x-show="count.small === 0" x-cloak class="" type="button">Add to
+				Cart</button>
+		</div>
+
 		<div class="menu-option" id="medium-pizza">
 			<img class="" src="./images/pizza.png" alt="">
 			<h2 class="pizza-title">Medium Pizza</h2>
@@ -83,18 +98,6 @@
 			</p>
 			<button @click="addPizza('large')" x-show="count.large > 0" x-cloak type="button">Add more...</button>
 			<button @click="buyPizza('large')" x-show="count.large === 0" x-cloak class="" type="button">Add to
-				Cart</button>
-		</div>
-
-		<div class="menu-option" id="small-pizza">
-			<img class="" src="images/pizza.png" alt="">
-			<h2 class="pizza-title">Small Pizza</h2>
-			<p class="price">R49.99</p>
-			<p class="description">
-				Small pizza with 3 toppings. 1 meat topping. 3 or less other toppings.
-			</p>
-			<button @click="addPizza('small')" x-show="count.small > 0" x-cloak type="button">Add more...</button>
-			<button @click="buyPizza('small')" x-show="count.small === 0" x-cloak class="" type="button">Add to
 				Cart</button>
 		</div>
 	</div>
