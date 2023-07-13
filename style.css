@@ -19,8 +19,7 @@ img {
 
 button {
 	background: var(--primary-fg) !important;
-	color: white !important;
-	box-shadow: 0 0 2px white;
+	box-shadow: 0 2px 2px black;
 	border-radius: 1rem;
 	height: 2rem;
 	padding-inline: 0.5rem !important;
@@ -28,6 +27,10 @@ button {
 
 button.round {
 	width: 2rem;
+}
+
+button:active {
+	box-shadow: 0 1px 1px black;
 }
 
 input {
@@ -66,6 +69,10 @@ input:focus {
 	padding: 2rem;
 }
 
+.pizza-cart input {
+	color: black;
+}
+
 .pizza-menu {
 	display: flex;
 	flex-direction: row;
@@ -93,6 +100,7 @@ input:focus {
 }
 
 .menu-option button {
+	color: white;
 	margin-top: auto;
 }
 
